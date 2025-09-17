@@ -61,10 +61,10 @@ class Game {
         // Plataforma de inicio
         this.platforms.push(new Platform(150, 550, 100, 10, 'normal'));
         
-        // Generar plataformas hacia arriba
+        // Generar plataformas hacia arriba (más separadas al inicio)
         for (let i = 1; i < 50; i++) {
             const x = Math.random() * (this.canvas.width - 80);
-            const y = 550 - (i * 120);
+            const y = 550 - (i * 100); // Más separación entre plataformas (100 en lugar de 120)
             this.platforms.push(new Platform(x, y, 80, 10, 'normal'));
             
             // Añadir monedas aleatoriamente (70% de probabilidad)
@@ -82,7 +82,9 @@ class Game {
         if (topPlatform > this.camera.y - 1000) {
             for (let i = 0; i < 10; i++) {
                 const x = Math.random() * (this.canvas.width - 80);
-                const y = topPlatform - 120 - (i * 120);
+                // Separación dinámica basada en el nivel
+                const separation = Math.max(80, 120 - (this.level * 5)); // Se reduce la separación con el nivel
+                const y = topPlatform - separation - (i * separation);
                 this.platforms.push(new Platform(x, y, 80, 10, 'normal'));
                 
                 // Añadir monedas aleatoriamente (70% de probabilidad)
@@ -151,14 +153,17 @@ class Game {
         if (currentHeight > this.height) {
             this.height = currentHeight;
             
-            // Subir nivel cada 100m
-            const newLevel = Math.floor(this.height / 100) + 1;
+            // Subir nivel cada 50m (más frecuente)
+            const newLevel = Math.floor(this.height / 50) + 1;
             if (newLevel > this.level) {
                 this.level = newLevel;
                 this.addCollisionLog(`¡NIVEL ${this.level}! Mayor velocidad`);
-                // Aumentar velocidad del jugador
-                this.player.moveSpeed = 5 + (this.level - 1) * 1;
-                this.player.jumpPower = -15 - (this.level - 1) * 0.5;
+                
+                // Aumentar velocidad del jugador más gradualmente
+                this.player.moveSpeed = 3 + (this.level - 1) * 0.8; // Incremento más suave
+                this.player.jumpPower = -12 - (this.level - 1) * 0.8; // Salto más potente
+                this.player.gravity = 0.3 + (this.level - 1) * 0.05; // Gravedad aumenta ligeramente
+                this.player.maxFallSpeed = 10 + (this.level - 1) * 1; // Velocidad de caída aumenta
             }
         }
         
@@ -276,10 +281,10 @@ class Player {
         this.velY = 0;
         this.game = game;
         this.onGround = false;
-        this.jumpPower = -15;
-        this.gravity = 0.5;
-        this.maxFallSpeed = 15;
-        this.moveSpeed = 5;
+        this.jumpPower = -12; // Salto más suave al inicio
+        this.gravity = 0.3; // Gravedad más suave
+        this.maxFallSpeed = 10; // Velocidad de caída más lenta
+        this.moveSpeed = 3; // Movimiento más lento al inicio
         this.lastPlatformY = y; // Para tracking de nuevas plataformas
         this.bounceAnimation = 0;
     }
