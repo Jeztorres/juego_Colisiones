@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro Doodle Jump</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <canvas id="gameCanvas" width="400" height="600"></canvas>
+        <div class="sidebar">
+            <h1>Retro Jump</h1>
+            <div class="info-panel">
+                <div class="info-item">
+                    <h2>Puntos</h2>
+                    <p id="score">0</p>
+                </div>
+                <div class="info-item">
+                    <h2>Altura</h2>
+                    <p id="height">0</p>
+                </div>
+                <div class="info-item">
+                    <h2>Monedas</h2>
+                    <p id="coins">0</p>
+                </div>
+                <div class="info-item">
+                    <h2>Nivel</h2>
+                    <p id="level">1</p>
+                </div>
+                <div class="info-item">
+                    <h2>Colisión</h2>
+                    <div id="collision-log">En espera...</div>
+                </div>
+            </div>
+            <div class="controls">
+                <p>Usa ← → para moverte</p>
+                <button id="restartButton">Reiniciar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="game-over-screen" id="gameOverScreen">
+        <h1>Game Over</h1>
+        <p>Altura Final: <span id="finalHeight">0</span></p>
+        <p>Puntos Finales: <span id="finalScore">0</span></p>
+        <button id="restartButtonGameOver">Jugar de Nuevo</button>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

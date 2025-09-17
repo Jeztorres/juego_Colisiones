@@ -1,0 +1,127 @@
+body {
+    margin: 0;
+    font-family: 'Press Start 2P', cursive;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+h1, h2 {
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0px #f0f;
+}
+
+.container {
+    display: flex;
+    border: 4px solid #fff;
+    box-shadow: 0 0 20px #f0f, 0 0 30px #0ff;
+}
+
+canvas {
+    background-color: #111;
+    display: block;
+    border-right: 4px solid #fff;
+}
+
+.sidebar {
+    width: 250px;
+    padding: 20px;
+    background-color: #222;
+    display: flex;
+    flex-direction: column;
+}
+
+.info-panel {
+    flex-grow: 1;
+}
+
+.info-item {
+    margin-bottom: 20px;
+}
+
+.info-item h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #fff;
+    padding-bottom: 5px;
+}
+
+.info-item p {
+    font-size: 14px;
+    margin: 0;
+}
+
+#score, #height {
+    color: #ff0;
+    font-size: 20px;
+}
+
+#collision-log {
+    height: 200px;
+    overflow-y: auto;
+    background-color: #111;
+    border: 2px solid #fff;
+    padding: 10px;
+    font-size: 10px;
+    line-height: 1.4;
+}
+
+#collision-log p {
+    margin: 0 0 5px 0;
+    text-transform: uppercase;
+}
+
+.platform-log { color: #0f0; }
+.coin-log { color: #ff0; }
+.fall-log { color: #f00; }
+
+.controls {
+    margin-top: auto;
+    text-align: center;
+}
+
+.controls p {
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+button {
+    font-family: 'Press Start 2P', cursive;
+    background-color: #f0f;
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+    background-color: #fff;
+    color: #f0f;
+}
+
+.game-over-screen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    padding: 40px;
+    border: 4px solid #f00;
+    text-align: center;
+    display: none; /* Oculto por defecto */
+    z-index: 10;
+}
+
+.game-over-screen h1 {
+    color: #f00;
+    text-shadow: 2px 2px 0px #fff;
+}
