@@ -67,8 +67,8 @@ class Game {
             const y = 550 - (i * 120);
             this.platforms.push(new Platform(x, y, 80, 10, 'normal'));
             
-            // Añadir monedas aleatoriamente (30% de probabilidad)
-            if (Math.random() < 0.3) {
+            // Añadir monedas aleatoriamente (70% de probabilidad)
+            if (Math.random() < 0.7) {
                 const coinX = x + Math.random() * 60;
                 const coinY = y - 30;
                 this.coins_array.push(new Coin(coinX, coinY));
@@ -85,8 +85,8 @@ class Game {
                 const y = topPlatform - 120 - (i * 120);
                 this.platforms.push(new Platform(x, y, 80, 10, 'normal'));
                 
-                // Añadir monedas aleatoriamente
-                if (Math.random() < 0.3) {
+                // Añadir monedas aleatoriamente (70% de probabilidad)
+                if (Math.random() < 0.7) {
                     const coinX = x + Math.random() * 60;
                     const coinY = y - 30;
                     this.coins_array.push(new Coin(coinX, coinY));
